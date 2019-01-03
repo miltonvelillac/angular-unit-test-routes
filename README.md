@@ -12,7 +12,7 @@ Both cases are tested in the same way
 
 - Run test with ng test, and run project with ng serve
 
-#Spec fields
+# Spec fields instruction
 - first you can have the RouterTestingModule in the imports with the routes that you want to test, it is better to create a mock field for the routes (see mock-routes.ts) and load it.
 
 - Second you should created an injector (const injector = getTestBed();) from getTestBed function.
