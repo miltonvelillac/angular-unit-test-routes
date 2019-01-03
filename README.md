@@ -1,27 +1,24 @@
-# AngularUnitTestRoutes
+# Project Description
+This is a little example how you can create unit test using jasmine and karma for test routes
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
+You can see the examples in the register.component.spect.ts and login.component.spect.ts
 
-## Development server
+I have created two buttoms, one in both components, each buttoms go to other component using router-outlet.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Login component has a function in the ts field for navigate to register
+Register component calls to Login component from its own html with routerLink
 
-## Code scaffolding
+Both cases are tested in the same way
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Run test with ng test, and run project with ng serve
 
-## Build
+#Spec fields
+- first you can have the RouterTestingModule in the imports with the routes that you want to test, it is better to create a mock field for the routes (see mock-routes.ts) and load it.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+- Second you should created an injector (const injector = getTestBed();) from getTestBed function.
 
-## Running unit tests
+-Third with the injector you shold the routes (const router = injector.get(Router);)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Finally you can try if the current paht is the one you want (expect(router.url).toEqual('/login');)
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- Note: Is important that you use fakeAsync and use the flush function before the expect
